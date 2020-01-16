@@ -3,6 +3,7 @@ set softtabstop=4
 set shiftwidth=4
 set expandtab
 
+set number
 set showcmd
 
 filetype plugin indent on
