@@ -7,6 +7,10 @@ set smarttab
 set showcmd
 set number
 
+" Highlight column 110
+set colorcolumn=110
+highlight ColorColumn ctermbg=darkgray
+
 filetype plugin indent on
 
 let g:netrw_liststyle=3
@@ -48,9 +52,22 @@ else
 endif " has("autocmd")
 
 " Mappings 
+let mapleader=' '
 
 " Insert Mode
 inoremap kj <Esc>
+
+" fzf :Files
+nnoremap <silent> <leader><leader> :Files<Esc>
+
+" fzf :Files in same directory
+nnoremap <silent> <leader>. :Files <C-r>=expand("%:h")<CR>/<CR>
+
+" fzf :Buffers
+nnoremap <silent> <Leader>b :Buffers<CR>
+
+" fzf :GFiles?
+nnoremap <silent> <Leader>g :GFiles?
 
 " Add optional packages.
 "
@@ -68,7 +85,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
-" Swift syntax highlighting
-Plug 'keith/swift.vim'
+" Autocompletion (installed locally)
+Plug '~/.vim/plugged/YouCompleteMe'
 
 call plug#end()
