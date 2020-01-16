@@ -1,12 +1,17 @@
 set tabstop=8
-set softtabstop=4
+set softtabstop=0
 set shiftwidth=4
 set expandtab
+set smarttab
 
-set number
 set showcmd
+set number
 
 filetype plugin indent on
+
+let g:netrw_liststyle=3
+let g:netrw_banner=0
+
 " Get the defaults that most users want.
 source $VIMRUNTIME/defaults.vim
 
@@ -61,6 +66,7 @@ call plug#begin('~/.vim/plugged')
 
 " Command line fuzzy finder
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 
 " Swift syntax highlighting
 Plug 'keith/swift.vim'

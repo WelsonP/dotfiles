@@ -23,8 +23,19 @@ if ! zgen saved; then
     zgen save
 fi
 
+# fzf 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-export FZF_DEFAULT_OPS="--extended --height 40% --border"
+export FZF_DEFAULT_OPS="--border --height 40%"
+
+# Key binding configs
+export FZF_CTRL_T_OPTS="--preview '(highlight -O ansi -l {} 2> /dev/null || cat {} || tree -C {}) 2> /dev/null | head -200'"
+export FZF_CTRL_R_OPTS="--preview 'echo {}' --preview-window down:3:hidden:wrap --bind '?:toggle-preview'"
+
+# Binds fzf widgets and unbinds fzf default bindings
+bindkey -r '^r'
+bindkey -r '^t'
+bindkey '^[r' fzf-history-widget
+bindkey '^[t' fzf-file-widget
 
 # Set default search to fd rather than find, if it is installed.
 if type fd &>/dev/null; then
@@ -40,6 +51,9 @@ fi
 alias dev='cd ~/Development'
 alias school='cd ~/School'
 alias downloads='cd ~/Downloads'
+
+alias vimrc='vim ~/.vim/vimrc'
+alias zshrc='vim ~/.zshrc'
 
 alias ls='ls -G'
 alias gst='git status'
